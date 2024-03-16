@@ -1,0 +1,8 @@
+---
+apiVersion: networking.gke.io/v1
+kind: ManagedCertificate
+metadata:
+  name: argocd
+spec:
+  domains:
+    - argo.datumforge.app

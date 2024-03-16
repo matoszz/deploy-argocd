@@ -1,0 +1,50 @@
+argo-cd:
+  global:
+    domain: argo.datumforge.app
+  configs:
+    cm: 
+      application.instanceLabelKey: argo.datumforge.app/instance
+      dex.config: |
+        connectors:
+          - config:
+              issuer: https://accounts.google.com
+              clientID: fake
+              clientSecret: fake
+            type: oidc
+            id: google
+            name: Google
+    params:
+      server.insecure: true
+    rbac:
+      scopes: '[groups, email]'
+      policy.default: role:basic-readonly
+      policy.csv: |
+        g, manderson@datum.net, role:admin
+        g, sfunkhouser@datum.net, role:admin
+        p, role:basic-readonly, clusters, get, *, allow
+        p, role:basic-readonly, repositories, get, *, allow
+  redis-ha:
+    enabled: true
+  controller:
+    replicas: 1
+  server:
+    extensions:
+      enabled: true
+    replicas: 2
+    ingress:
+      enabled: false
+    staticAssets:
+      enabled: true
+  repoServer:
+    replicas: 2
+  applicationSet:
+    replicas: 2
+  notifications:
+    argocdUrl: https://argo.datumforge.app
+    secret:
+      items:
+        argocd-slack-token: fake
+    notifiers:
+      service.slack: |
+        token: $argocd-slack-token
+        icon: "https://branding.cncf.io/img/projects/argo/icon/color/argo-icon-color.svg"
