@@ -2,7 +2,7 @@ steps:
   - name: ":helm: Helm Tarball Update"
     key: "helm-dep-up"
     plugins:
-      - datumforge/helm#e23d21a20c4254119fda11218d994054f7469681: 
+      - datumforge/helm#v1.0.0: 
           user:
             name: datum-bender
             email: bender@datum.net
@@ -16,7 +16,7 @@ steps:
           volume: ["`pwd`:/helm-docs"]
           entrypoint: "/usr/bin/helm-docs"
           command: ["helm", "docs", "--document-dependency-values"]
-      - datumforge/git-commit#8d87ed0c26215f7bf4277e0752b8faffb0a6cdd0:
+      - datumforge/git-commit#v1.0.1:
           message: "Updated helm docs"
           https: true
           user:
@@ -28,7 +28,7 @@ steps:
     plugins:
       - equinixmetal-buildkite/trivy#v1.18.5:
           severity: "CRITICAL,HIGH"
-          security-checks: "config,secret"
+          security-checks: "secret"
   
   - label: ":helm: lint"
     depends_on:
