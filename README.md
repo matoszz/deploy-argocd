@@ -7,7 +7,7 @@
 | Repository | Name | Version |
 |------------|------|---------|
 | https://argoproj.github.io/argo-helm | argo-cd | 6.7.3 |
-| https://argoproj.github.io/argo-helm | argocd-image-updater | 0.9.6 |
+| https://argoproj.github.io/argo-helm | argocd-image-updater | 0.9.7 |
 
 ## Values
 
