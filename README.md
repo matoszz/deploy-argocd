@@ -1,4 +1,8 @@
-# mitb-argocd
+[![Build status](https://badge.buildkite.com/d142d740e4827fdc442622650606e070e78f8b5357ad0bc178.svg)](https://buildkite.com/datum/deploy-argocd)
+
+# deploy argocd
+
+This repo contains the helm charts used to deploy an opinionated ArgoCD setup
 
 ![Version: 1.0.0](https://img.shields.io/badge/Version-1.0.0-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square)
 
